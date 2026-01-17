@@ -17,6 +17,6 @@ Upload an AWS Cost & Usage Report (CSV) and receive:
 - No automatic cost changes
 
 ## Tech Stack (Initial)
-- Backend: Node.js + Express
+- Backend: Python + FastAPI + Pandas  
 - Frontend: React
 - AI: OpenAI (analysis + insights)
