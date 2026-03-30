@@ -1,5 +1,6 @@
 import os
 import csv
+from parser import analizeData
 import pandas as pd
 from fastapi import FastAPI, HTTPException, UploadFile
 
@@ -27,16 +28,7 @@ async def upload_file(file: UploadFile):
             detail="Only CSV files are allowed"
             )
     
-    directory = "./temp/"
-    file_path = f"{directory}/{file.filename}"
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-    with open (file_path, "wb") as buffer:
-        buffer.write(file.file.read())
-
-    df = pd.read_csv(file_path)
-
-    service_Cost = df.iloc[0].to_dict()
+    file_path, service_Cost = analizeData(file)
     
     return {
         "message": f"File received successfully {file.filename}",
